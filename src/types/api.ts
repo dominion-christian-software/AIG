@@ -11,6 +11,8 @@ export interface TokenRequest {
 export interface TokenResponse {
   data: {
     accessToken: string;
+    expiresIn?: number;
+    tokenType?: string;
   };
 }
 
@@ -27,6 +29,7 @@ export interface ChatGroup {
   id: string;
   name: string;
   description: string;
+  chats?: Chat[];
 }
 
 export interface CreateChatGroupRequest {
@@ -45,12 +48,15 @@ export interface Chat {
   id: string;
   title: string;
   groupId?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface ChatMessage {
   id: string;
   content: string;
   role: "user" | "assistant";
+  createdAt?: string;
 }
 
 export interface SendMessageRequest {
@@ -78,4 +84,19 @@ export interface UpdateChatRequest {
 
 export interface ApiResponse<T> {
   data: T;
+}
+
+// --- Streaming ---
+
+export interface StreamChunk {
+  event?: string;
+  data: string;
+}
+
+// --- Error ---
+
+export interface DominionApiError {
+  status: number;
+  statusText: string;
+  message?: string;
 }
