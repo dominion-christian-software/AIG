@@ -1,0 +1,602 @@
+{
+  "info": {
+    "name": "dominion-enterprise-be-api-main",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Admin - Client management",
+      "item": [
+        {
+          "name": "Create new client",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/admin/client-profiles",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "admin",
+                "client-profiles"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{                                                                             \n    \"legalName\": \"Answers in Genesis\",\n    \"displayName\": \"Answers in Genesis\",\n    \"incorporationCountryIso\": \"US\",\n    \"taxId\": \"NA\",\n    \"registrationNumber\": \"NA\",\n    \"incorporationDate\": \"0001-01-01\",\n    \"websiteUrl\": \"https://answersingenesis.com\",\n    \"usageTier\": 2103,\n    \"clientType\": 1102,\n    \"status\": 1202,\n    \"metadata\": {\n      \"industry\": \"religious\",\n      \"employeeCount\": 10\n    },\n    \"addresses\": [\n      {\n        \"addrLine1\": \"NA\",\n        \"addrLine2\": \"NA\",\n        \"city\": \"NA\",\n        \"province\": \"NA\",\n        \"countryIso\": \"US\",\n        \"postalCode\": \"NA\",\n        \"isPrimary\": true\n      }\n    ],\n    \"contacts\": [\n      {\n        \"contactEmail\": \"test@test.com\",\n        \"contactName\": \"Contact Person I\",\n        \"contactPhone\": \"\",\n        \"isPrimary\": true\n      }\n    ],\n    \"oauthCredential\": {\n      \"name\": \"Default API Key\",\n      \"scopes\": [\"*\"]\n    }\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Update client info",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/admin/client-profiles/3865a379-b71e-405b-b636-4796ec6dea2d",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "admin",
+                "client-profiles",
+                "3865a379-b71e-405b-b636-4796ec6dea2d"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"promptPresetId\": \"answer-in-genesis\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Chat Group",
+      "item": [
+        {
+          "name": "Create new chat group",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/groups",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "groups"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Theology Studies\",\n  \"description\": \"Conversations about theological topics\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete chat group",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/groups/a63ce69b-f536-4976-8f10-988783a2036c",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "groups",
+                "a63ce69b-f536-4976-8f10-988783a2036c"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "List chat groups",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/groups?listChats=true",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "groups"
+              ],
+              "query": [
+                {
+                  "key": "listChats",
+                  "value": "true"
+                }
+              ],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Update chat group",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/groups/462a4449-fa28-4e21-98e7-9039ebb8f4c7",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "groups",
+                "462a4449-fa28-4e21-98e7-9039ebb8f4c7"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Advanced Theology Studies\",\n  \"description\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "OAuth",
+      "item": [
+        {
+          "name": "Get my OAuth info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/auth/me",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Obtain access token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/auth/token",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "auth",
+                "token"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiKey\": \"{{client_apikey}}\",\n  \"clientSecret\": \"{{client_secret}}\",\n  \"grantType\": \"client_credentials\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {},
+                "exec": [
+                  "const body = pm.response.body;",
+                  "if (body != null) {",
+                  "  const data = body.data;",
+                  "  const accessToken = data.accessToken;",
+                  "  pm.environment.set(\"auth_token\", accessToken);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chats",
+      "item": [
+        {
+          "name": "Delete chat message history",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/chats/381a2d77-f897-40a2-9547-9be9074d18ea/messages",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "chats",
+                "381a2d77-f897-40a2-9547-9be9074d18ea",
+                "messages"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Delete chat",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/chats/381a2d77-f897-40a2-9547-9be9074d18ea",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "chats",
+                "381a2d77-f897-40a2-9547-9be9074d18ea"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Get all chats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/chats",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "chats"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Get chat messages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/chats/51a90849-4468-4452-adf5-61ad4bb8ba85/messages",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "chats",
+                "51a90849-4468-4452-adf5-61ad4bb8ba85",
+                "messages"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Send new incognito chat - streaming",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/chats/incognito/stream",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "chats",
+                "incognito",
+                "stream"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": {\n    \"content\": \"When was the Earth created?\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send new incognito chat",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/chats/incognito",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "chats",
+                "incognito"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": {\n    \"content\": \"Find the Internet.. Who's the CEO of MMS Company?\"\n  },\n  \"options\": {\n    \"includedDomains\": [\"mmscompany.id\"] \n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send new message to a chat - streaming",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/chats/messages/stream",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "chats",
+                "messages",
+                "stream"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chatId\": \"b772b5cc-fff7-4376-a600-d858e9bffc8b\",\n  \"message\": {\n    \"content\": \"What's the keyword?\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Send new message to a chat",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/chats/messages",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "chats",
+                "messages"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chatId\": \"b772b5cc-fff7-4376-a600-d858e9bffc8b\",\n  \"message\": {\n    \"content\": \"Hey, The keyword is 'banana'\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Update chat",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{protocol}}://{{host}}:{{port}}/v1/chats/51a90849-4468-4452-adf5-61ad4bb8ba85",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}:{{port}}"
+              ],
+              "path": [
+                "v1",
+                "chats",
+                "51a90849-4468-4452-adf5-61ad4bb8ba85"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"newTitle\": \"Dominion, how are you? 2\",\n  \"newGroupId\": \"ff756207-3071-420c-a95d-c4149821dc0f\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "protocol",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "host",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "port",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "auth_token",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "admin_sk",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "client_apikey",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "client_secret",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
