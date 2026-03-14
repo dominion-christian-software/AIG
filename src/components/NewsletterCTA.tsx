@@ -1,3 +1,5 @@
+"use client";
+
 export default function NewsletterCTA() {
   return (
     <section className="bg-aig-teal text-white py-12">
