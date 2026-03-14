@@ -1,12 +1,23 @@
+import Header from "@/components/Header";
+import HeroBanner from "@/components/HeroBanner";
+import ContentGrid from "@/components/ContentGrid";
+import VideoSection from "@/components/VideoSection";
+import MinistryHighlights from "@/components/MinistryHighlights";
+import NewsletterCTA from "@/components/NewsletterCTA";
+import Footer from "@/components/Footer";
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <main className="flex flex-col items-center gap-6 text-center">
-        <h1 className="text-4xl font-bold">Answers in Genesis</h1>
-        <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
-          AI-powered chat and search
-        </p>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1">
+        <HeroBanner />
+        <ContentGrid />
+        <VideoSection />
+        <MinistryHighlights />
+        <NewsletterCTA />
       </main>
+      <Footer />
     </div>
   );
 }
