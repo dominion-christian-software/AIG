@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { Chat, ChatMessage } from "@/types/api";
 import MessageList from "./MessageList";
 import MessageInput from "./MessageInput";
@@ -38,14 +39,26 @@ export default function ChatWindow({
   onNewIncognito,
   onToggleHistory,
 }: ChatWindowProps) {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <div
-      className="fixed bottom-24 right-6 z-50 flex h-[520px] w-[380px] flex-col overflow-hidden
+      className={`fixed bottom-24 right-6 z-50 flex flex-col overflow-hidden
         rounded-2xl bg-white shadow-2xl ring-1 ring-zinc-200 animate-in fade-in slide-in-from-bottom-4
-        duration-300"
+        duration-300 transition-all ${
+          expanded
+            ? "w-[600px] h-[700px]"
+            : "w-[380px] h-[520px]"
+        }`}
     >
       {/* Header */}
-      <div className="flex items-center justify-between bg-[#00546B] px-4 py-3">
+      <div
+        className="flex items-center justify-between px-4 py-3"
+        style={{
+          background: "linear-gradient(135deg, #00546B 0%, #007a9a 50%, #00546B 100%)",
+          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 3px rgba(0,0,0,0.2)",
+        }}
+      >
         <div className="flex items-center gap-2">
           <button
             onClick={onToggleHistory}
@@ -66,6 +79,22 @@ export default function ChatWindow({
           </div>
         </div>
         <div className="flex items-center gap-1">
+          {/* Expand / Collapse */}
+          <button
+            onClick={() => setExpanded(!expanded)}
+            aria-label={expanded ? "Collapse chat" : "Expand chat"}
+            className="rounded-lg p-1.5 text-white/70 hover:bg-white/10 hover:text-white transition-colors"
+          >
+            {expanded ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 9L4 4m0 0v4m0-4h4m6 6l5 5m0 0v-4m0 4h-4" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7" />
+              </svg>
+            )}
+          </button>
           {!isIncognito && (
             <button
               onClick={onNewChat}
@@ -106,14 +135,17 @@ export default function ChatWindow({
 
       {/* Powered by */}
       <div className="bg-white border-t border-zinc-100 px-4 py-1.5 text-center">
-        <a
-          href="https://dominion.chat"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[10px] text-zinc-400 hover:text-zinc-600 transition-colors"
-        >
-          powered by <span className="font-medium">Dominion</span>
-        </a>
+        <span className="text-[10px] text-zinc-400">
+          powered by{" "}
+          <a
+            href="https://dominion.chat"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-[#00546B] hover:text-[#007a9a] transition-colors"
+          >
+            Dominion
+          </a>
+        </span>
       </div>
     </div>
   );
