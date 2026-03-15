@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ComponentPropsWithoutRef } from "react";
+import { useEffect, useRef, useCallback, type ComponentPropsWithoutRef } from "react";
 import ReactMarkdown from "react-markdown";
 import type { ChatMessage } from "@/types/api";
 
@@ -26,10 +26,29 @@ interface MessageListProps {
 
 export default function MessageList({ messages, streamingContent, isStreaming }: MessageListProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const userScrolledUp = useRef(false);
 
+  const handleScroll = useCallback(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    // If user is within 80px of bottom, consider them "following" the stream
+    const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+    userScrolledUp.current = !atBottom;
+  }, []);
+
+  // Re-snap to bottom when a new user message is sent
   useEffect(() => {
+    userScrolledUp.current = false;
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, streamingContent]);
+  }, [messages.length]);
+
+  // Auto-scroll during streaming only if user hasn't scrolled up
+  useEffect(() => {
+    if (!userScrolledUp.current) {
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [streamingContent]);
 
   if (messages.length === 0 && !isStreaming) {
     return (
@@ -46,7 +65,7 @@ export default function MessageList({ messages, streamingContent, isStreaming }:
   }
 
   return (
-    <div className="flex-1 overflow-y-auto p-4 space-y-3">
+    <div ref={containerRef} onScroll={handleScroll} className="flex-1 overflow-y-auto p-4 space-y-3">
       {messages.map((msg) => (
         <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
           <div
