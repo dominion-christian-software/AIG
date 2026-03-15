@@ -103,6 +103,18 @@ export default function ChatWindow({
 
       {/* Input */}
       <MessageInput onSend={onSend} disabled={isStreaming} />
+
+      {/* Powered by */}
+      <div className="bg-white border-t border-zinc-100 px-4 py-1.5 text-center">
+        <a
+          href="https://dominion.chat"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[10px] text-zinc-400 hover:text-zinc-600 transition-colors"
+        >
+          powered by <span className="font-medium">Dominion</span>
+        </a>
+      </div>
     </div>
   );
 }
